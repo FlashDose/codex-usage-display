@@ -1,0 +1,15 @@
+# Local build output
+.build/
+dist/
+.swiftpm/
+*.dSYM/
+
+# macOS and editor files
+.DS_Store
+*.xcuserstate
+
+# Local credentials and signing assets
+.env
+.env.*
+*.p12
+*.mobileprovision
