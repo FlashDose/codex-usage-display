@@ -1,31 +1,31 @@
 # Codex Usage Display
 
-**English** | [简体中文](README.zh-CN.md)
+[简体中文](README.zh-CN.md)
 
-An unofficial macOS menu bar app that shows your remaining Codex 5-hour and weekly usage limits.
+An unofficial macOS menu bar app that displays your remaining Codex 5-hour and weekly usage limits.
 
 ## Requirements
 
-- Apple silicon Mac running macOS 13 or later. No Intel release is provided.
+- Apple silicon Mac running macOS 13 or later.
 - [Codex CLI](https://learn.chatgpt.com/docs/codex/cli) installed and signed in with your ChatGPT account.
 
 ## Install
 
 1. Download `CodexUsageBar-v0.1.0-arm64.zip` from the [v0.1.0 preview release](https://github.com/FlashDose/codex-usage-display/releases/tag/v0.1.0).
 2. Unzip it and move `Codex Usage Bar.app` to your Applications folder.
-3. Open the app. It is ad-hoc signed and has not been notarized by Apple. If macOS blocks the first launch, verify the download source and follow [Apple's instructions](https://support.apple.com/en-us/102445) to choose **Open Anyway** in **System Settings → Privacy & Security**.
+3. Open the app.
 
-GitHub's automatically generated “Source code” archives do not contain the app.
+This preview is ad hoc signed and not notarized. If macOS blocks it, verify the download source, then follow [Apple's instructions](https://support.apple.com/en-us/102445) to select **Open Anyway** in **System Settings → Privacy & Security**. Download the ZIP asset; GitHub's “Source code” archives do not contain the app.
 
 ## Use
 
-The menu bar shows the remaining 5-hour and weekly percentages, with a countdown to the next 5-hour reset above them. Click the item for exact reset times and a manual refresh command. Usage refreshes every three minutes; the countdown updates every minute.
+The white percentage on the left shows the 5-hour limit; the teal percentage on the right shows the weekly limit. The `↻` line above them counts down to the next 5-hour reset. Click the menu bar item for exact reset times and manual refresh. Usage refreshes every three minutes; the countdown updates every minute.
 
-If the CLI does not provide a weekly limit, the app shows `—`. Some menu labels and error messages are currently in Chinese. Installation on another Mac has not yet been independently verified.
+If the CLI does not provide a weekly limit, the app shows `—`. Menu labels and error messages are currently in Chinese.
 
 ## Build from source
 
-Install a Swift compiler, then run:
+Install the Xcode Command Line Tools, then run:
 
 ```bash
 ./build_app.sh
@@ -35,6 +35,6 @@ The app is created at `dist/Codex Usage Bar.app`. On an Apple silicon Mac, `./sc
 
 ## Data and privacy
 
-The app uses the installed Codex CLI's local app-server to request `account/rateLimits/read`. It does not require an OpenAI API key, directly read CLI authentication files, or store credentials or usage history. No separate telemetry service is included in this project. The CLI protocol may change in future versions.
+The app starts the installed Codex CLI locally and requests `account/rateLimits/read`. It does not require an OpenAI API key, read CLI credentials directly, store usage history, or send telemetry. The CLI handles authentication and network communication.
 
 This project is not affiliated with OpenAI. Licensed under the [MIT License](LICENSE).
